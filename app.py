@@ -6,8 +6,15 @@ CORS(app)
 
 prediction = 0
 
-@app.route('/prediction', methods=['GET'])
+@app.route('/prediction', methods=['POST'])
 def prediction():
+    if request.method == 'POST':
+        file = request.files['file']
+        print(file)
+        return '<h1>Hello, its a post method!</h1>'
+
+@app.route('/fetch', methods=['GET'])
+def fetch():
     if request.method == 'GET':
         print(prediction)
         return '<h1>Prediction page</h1>'
